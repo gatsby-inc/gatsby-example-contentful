@@ -13,13 +13,13 @@ export default ({ article }) => (
     <small>{article.publishDate}</small>
     <p
       dangerouslySetInnerHTML={{
-        __html: article.description.childMarkdownRemark.html,
+        __html: article.description && article.description.childMarkdownRemark.html,
       }}
     />
-    {article.tags.map(tag => (
+    {article.tags && article.tags.length > 0 ? article.tags.map(tag => (
       <p className={styles.tag} key={tag}>
         {tag}
       </p>
-    ))}
+    )) : null}
   </div>
 )
